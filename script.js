@@ -20,11 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (video.duration) {
                 video.currentTime = scrollFraction * video.duration;
 
-                // Fade in the top-left logo right towards the end (last 2 seconds)
-                const timeLeft = video.duration - video.currentTime;
+                // Fade in the top-left logo right towards the end (last 2 seconds of video)
+                const secondsFromEnd = 2;
+                const showThreshold = video.duration > secondsFromEnd ? (video.duration - secondsFromEnd) / video.duration : 0.8;
                 const topLeftLogo = document.querySelector('.top-left-logo');
                 if (topLeftLogo) {
-                    if (timeLeft <= 2 && scrollFraction > 0.1) {
+                    if (scrollFraction >= showThreshold && scrollFraction > 0.1) {
                         topLeftLogo.classList.add('visible');
                     } else {
                         topLeftLogo.classList.remove('visible');
