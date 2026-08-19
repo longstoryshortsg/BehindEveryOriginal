@@ -69,7 +69,8 @@ body {
     position: absolute;
     top: 2rem;
     left: 2rem;
-    width: 140px; /* smaller corner branding */
+    max-width: 700px; /* same size as the starting logo */
+    width: 100%;
     height: auto;
     z-index: 10;
     opacity: 0;
