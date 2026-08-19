@@ -19,6 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set the video time based on the scroll fraction
             if (video.duration) {
                 video.currentTime = scrollFraction * video.duration;
+
+                // Fade in the top-left logo right towards the end (last 2 seconds)
+                const timeLeft = video.duration - video.currentTime;
+                const topLeftLogo = document.querySelector('.top-left-logo');
+                if (topLeftLogo) {
+                    if (timeLeft <= 2 && scrollFraction > 0.1) {
+                        topLeftLogo.classList.add('visible');
+                    } else {
+                        topLeftLogo.classList.remove('visible');
+                    }
+                }
             }
 
             // Hide the overlay text when the user starts scrolling
